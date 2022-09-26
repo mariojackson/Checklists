@@ -13,6 +13,8 @@ class ChecklistViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         // TODO: Remove test items
         let item1 = ChecklistItem()
         item1.text = "Build a new PC"
