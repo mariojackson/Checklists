@@ -28,6 +28,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         
         let item3 = ChecklistItem()
         item3.text = "Grocery shopping"
+        item3.checked = true
         items.append(item3)
         
         let item4 = ChecklistItem()
@@ -79,7 +80,9 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     }
     
     func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
-        cell.accessoryType = item.checked ? .none : .checkmark
+        let label = cell.viewWithTag(1001) as! UILabel
+        
+        label.text = item.checked ? "√" : ""
     }
     
     func configureText(for cell: UITableViewCell, with item: ChecklistItem) {
@@ -103,6 +106,18 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         navigationController?.popViewController(animated: true)
     }
     
+    func addItemViewController(_ controller: AddItemViewController, didFinishEditing item: ChecklistItem) {
+        if let index = items.firstIndex(of: item) {
+            let indexPath = IndexPath(row: index, section: 0)
+            
+            if let cell = tableView.cellForRow(at: indexPath) {
+                configureText(for: cell, with: item)
+            }
+        }
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - Navigation
     override func prepare(
         for seque: UIStoryboardSegue,
@@ -111,6 +126,13 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         if seque.identifier == "AddItem" {
             let controller = seque.destination as! AddItemViewController
             controller.delegate = self
+        } else if seque.identifier == "EditItem" {
+            let controller = seque.destination as! AddItemViewController
+            controller.delegate = self
+            
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                controller.itemToEdit = items[indexPath.row]
+            }
         }
     }
 }
