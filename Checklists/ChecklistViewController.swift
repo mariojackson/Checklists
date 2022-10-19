@@ -15,29 +15,6 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        // TODO: Remove test items
-        let item1 = ChecklistItem()
-        item1.text = "Build a new PC"
-        items.append(item1)
-        
-        
-        let item2 = ChecklistItem()
-        item2.text = "Become an iOS professional"
-        items.append(item2)
-        
-        let item3 = ChecklistItem()
-        item3.text = "Grocery shopping"
-        item3.checked = true
-        items.append(item3)
-        
-        let item4 = ChecklistItem()
-        item4.text = "Walk the dog"
-        items.append(item4)
-        
-        let item5 = ChecklistItem()
-        item5.text = "Clean the desk"
-        items.append(item5)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,6 +43,8 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        saveChecklistItems()
     }
     
     override func tableView(
@@ -77,6 +56,8 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
+        
+        saveChecklistItems()
     }
     
     func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
@@ -104,6 +85,8 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         tableView.insertRows(at: indexPaths, with: .automatic)
         
         navigationController?.popViewController(animated: true)
+        
+        saveChecklistItems()
     }
     
     func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem) {
@@ -116,6 +99,8 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         }
         
         navigationController?.popViewController(animated: true)
+        
+        saveChecklistItems()
     }
     
     // MARK: - Navigation
@@ -133,6 +118,35 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
                 controller.itemToEdit = items[indexPath.row]
             }
+        }
+    }
+    
+    // MARK: - Persisting Data
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(
+            for: .documentDirectory,
+            in: .userDomainMask
+        )
+        
+        return paths[0]
+    }
+    
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("Checklists.plist")
+    }
+    
+    func saveChecklistItems() {
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(items)
+            
+            try data.write(
+                to: dataFilePath(),
+                options: Data.WritingOptions.atomic
+            )
+        } catch {
+            print("Error encoding item array \(error.localizedDescription)")
         }
     }
 }
