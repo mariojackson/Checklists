@@ -15,6 +15,8 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        loadChecklistItems()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -147,6 +149,20 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
             )
         } catch {
             print("Error encoding item array \(error.localizedDescription)")
+        }
+    }
+    
+    func loadChecklistItems() {
+        let path = dataFilePath()
+        
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            
+            do {
+                items = try decoder.decode([ChecklistItem].self, from: data)
+            } catch {
+                print("Error decoding item array \(error.localizedDescription)")
+            }
         }
     }
 }
