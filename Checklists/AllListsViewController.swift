@@ -13,7 +13,9 @@ class AllListsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UITableView.self, forCellReuseIdentifier: cellIdentifier)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
     }
 
     // MARK: - Table view data source
@@ -26,5 +28,9 @@ class AllListsViewController: UITableViewController {
         cell.textLabel!.text = "List \(indexPath.row)"
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowChecklist", sender: nil)
     }
 }

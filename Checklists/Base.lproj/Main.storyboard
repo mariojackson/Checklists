@@ -20,9 +20,9 @@
                             <outlet property="delegate" destination="lVc-n1-Tpd" id="ZiO-CT-JQU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title=" (Name of the Checklist)" id="0Oo-PF-mgf"/>
+                    <navigationItem key="navigationItem" title="Checklists" id="0Oo-PF-mgf"/>
                     <connections>
-                        <segue destination="Esz-bq-Q15" kind="show" id="OcT-DR-j3U"/>
+                        <segue destination="Esz-bq-Q15" kind="show" identifier="ShowChecklist" id="OcT-DR-j3U"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Dj-Ul-Qzf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -86,7 +86,7 @@ FuKImg
                             <outlet property="delegate" destination="Esz-bq-Q15" id="oUd-94-bLp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Checklists" id="bra-KE-71s">
+                    <navigationItem key="navigationItem" title=" (Name of the Checklist)" id="bra-KE-71s">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="yMg-HM-KpT">
                             <connections>
                                 <segue destination="nbo-Rj-jFK" kind="show" identifier="AddItem" id="ni5-bQ-fYs"/>
