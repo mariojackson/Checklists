@@ -10,11 +10,13 @@ import UIKit
 class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
     
     var items = [ChecklistItem]()
+    var checklist: Checklist!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .never
+        title = checklist.name
         
         loadChecklistItems()
     }

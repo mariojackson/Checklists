@@ -18,7 +18,7 @@ class AllListsViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-    
+        
         // TODO: Remove test checklists
         lists.append(Checklist(name: "Birthdays"))
         lists.append(Checklist(name: "Groceries"))
@@ -26,7 +26,7 @@ class AllListsViewController: UITableViewController {
         lists.append(Checklist(name: "Mobile App"))
         lists.append(Checklist(name: "To Do"))
     }
-
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lists.count
@@ -43,6 +43,14 @@ class AllListsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ShowChecklist", sender: nil)
+        let checklist = lists[indexPath.row]
+        performSegue(withIdentifier: "ShowChecklist", sender: checklist)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowChecklist" {
+            let controller = segue.destination as! ChecklistViewController
+            controller.checklist = sender as? Checklist
+        }
     }
 }
