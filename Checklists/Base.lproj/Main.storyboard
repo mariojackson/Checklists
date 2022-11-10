@@ -39,7 +39,7 @@
         <!--Add Checklist-->
         <scene sceneID="gyy-tl-9La">
             <objects>
-                <tableViewController id="6TD-Iz-8LB" customClass="ListDetailViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListDetailViewController" id="6TD-Iz-8LB" customClass="ListDetailViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="vUx-Dh-SGp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,11 +88,12 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" style="plain" systemItem="done" id="ZvO-Xv-Ehe">
                             <connections>
-                                <action selector="done" destination="6TD-Iz-8LB" id="C5z-hj-mAn"/>
+                                <action selector="done" destination="6TD-Iz-8LB" id="yCm-90-hsB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneBarButton" destination="ZvO-Xv-Ehe" id="LQt-M7-hQR"/>
                         <outlet property="textField" destination="CHN-0g-f7L" id="8rG-ey-O2v"/>
                     </connections>
                 </tableViewController>
@@ -110,14 +111,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ChecklistItem" id="Ev8-rF-zlk">
-                                <rect key="frame" x="0.0" y="50" width="375" height="41"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="41.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ev8-rF-zlk" id="Ak3-0n-zZP">
-                                    <rect key="frame" x="0.0" y="0.0" width="316.5" height="41"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="316.5" height="41.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgW-MF-HvM">
-                                            <rect key="frame" x="16" y="1" width="13" height="39"/>
+                                            <rect key="frame" x="16" y="1" width="13" height="39.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="13" id="sau-aN-GKe"/>
                                             </constraints>
@@ -129,7 +130,7 @@ FuKImg
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chS-G2-RFA">
-                                            <rect key="frame" x="37" y="10" width="271.5" height="21"/>
+                                            <rect key="frame" x="37" y="10" width="271.5" height="21.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
