@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AllListsViewController: UITableViewController, ListDetailViewControllerDelegate {
+class AllListsViewController: UITableViewController, ListDetailViewControllerDelegate, UINavigationControllerDelegate {
     let cellIdentifier = "ChecklistCell"
     
     var dataModel: DataModel!
@@ -18,6 +18,18 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         navigationController?.navigationBar.prefersLargeTitles = true
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.delegate = self
+        
+        // Show last opened checklist, if one was opened
+        let index = UserDefaults.standard.integer(forKey: "ChecklistIndex")
+        
+        if index != 1 {
+            let checklist = dataModel.lists[index]
+            performSegue(withIdentifier: "ShowChecklist", sender: checklist)
+        }
     }
     
     // MARK: - Table view data source
@@ -103,5 +115,14 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         }
         
         navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - Navigation Controller Delegates
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        // If back button was tapped, and we land in this controller, then set invalid
+        // index value to define that we shouldn't open a checklist when reopening the app
+        if viewController === self {
+            UserDefaults.standard.set(-1, forKey: "ChecklistIndex")
+        }
     }
 }
