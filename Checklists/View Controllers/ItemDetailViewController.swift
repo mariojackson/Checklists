@@ -50,9 +50,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
             return
         }
         
-        let item = ChecklistItem()
-        item.text = textField.text!
-        
+        let item = ChecklistItem(text: textField.text!)
         delegate?.itemDetailViewController(self, didFinishAdding: item)
     }
     
