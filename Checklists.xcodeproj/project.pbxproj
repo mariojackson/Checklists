@@ -17,7 +17,6 @@
 		ACB86A0628DF755000BF6197 /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB86A0528DF755000BF6197 /* ChecklistViewController.swift */; };
 		ACB86A0928DF755000BF6197 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACB86A0728DF755000BF6197 /* Main.storyboard */; };
 		ACB86A0B28DF755100BF6197 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACB86A0A28DF755100BF6197 /* Assets.xcassets */; };
-		ACB86A0E28DF755100BF6197 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACB86A0C28DF755100BF6197 /* LaunchScreen.storyboard */; };
 		ACB86A1628E2070400BF6197 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB86A1528E2070400BF6197 /* ChecklistItem.swift */; };
 		ACB86A1828E360BA00BF6197 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB86A1728E360BA00BF6197 /* ItemDetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -34,7 +33,6 @@
 		ACB86A0528DF755000BF6197 /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
 		ACB86A0828DF755000BF6197 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACB86A0A28DF755100BF6197 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ACB86A0D28DF755100BF6197 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACB86A0F28DF755100BF6197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACB86A1528E2070400BF6197 /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
 		ACB86A1728E360BA00BF6197 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
@@ -76,7 +74,6 @@
 				ACB86A0328DF755000BF6197 /* SceneDelegate.swift */,
 				ACB86A0728DF755000BF6197 /* Main.storyboard */,
 				ACB86A0A28DF755100BF6197 /* Assets.xcassets */,
-				ACB86A0C28DF755100BF6197 /* LaunchScreen.storyboard */,
 				ACB86A0F28DF755100BF6197 /* Info.plist */,
 			);
 			path = Checklists;
@@ -162,7 +159,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACB86A0E28DF755100BF6197 /* LaunchScreen.storyboard in Resources */,
 				ACB86A0B28DF755100BF6197 /* Assets.xcassets in Resources */,
 				ACB86A0928DF755000BF6197 /* Main.storyboard in Resources */,
 			);
@@ -197,14 +193,6 @@
 				ACB86A0828DF755000BF6197 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		ACB86A0C28DF755100BF6197 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ACB86A0D28DF755100BF6197 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -335,7 +323,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Checklists/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = Main.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -345,6 +333,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = software.jackson.Checklists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -362,7 +353,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Checklists/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = Main.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -372,6 +363,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = software.jackson.Checklists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
